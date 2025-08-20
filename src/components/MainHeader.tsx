@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X, Search, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Menu, X, Search, BookOpen } from "lucide-react";
+import { ThemeToggle } from "./ThemeToggle";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -34,23 +35,12 @@ export default function Header() {
             >
               Home
             </Link>
-            <Link
-              href="/about"
-              className="text-muted-foreground hover:text-accent transition-colors font-medium"
-            >
-              About
-            </Link>
+
             <Link
               href="/blog"
               className="text-muted-foreground hover:text-accent transition-colors font-medium"
             >
               Blog
-            </Link>
-            <Link
-              href="/contact"
-              className="text-muted-foreground hover:text-accent transition-colors font-medium"
-            >
-              Contact
             </Link>
           </nav>
 
@@ -61,6 +51,9 @@ export default function Header() {
               <Search className="w-4 h-4" />
               <span className="sr-only">Search</span>
             </Button>
+
+            {/* Dark Mode Toggle Button */}
+            <ThemeToggle />
 
             {/* Mobile Menu Button */}
             <Button
@@ -90,13 +83,7 @@ export default function Header() {
               >
                 Home
               </Link>
-              <Link
-                href="/about"
-                className="text-muted-foreground hover:text-accent transition-colors font-medium"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                About
-              </Link>
+
               <Link
                 href="/blog"
                 className="text-muted-foreground hover:text-accent transition-colors font-medium"
@@ -104,13 +91,7 @@ export default function Header() {
               >
                 Blog
               </Link>
-              <Link
-                href="/contact"
-                className="text-muted-foreground hover:text-accent transition-colors font-medium"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Contact
-              </Link>
+
               <div className="pt-4 border-t">
                 <Button
                   variant="ghost"
@@ -120,6 +101,11 @@ export default function Header() {
                   <Search className="w-4 h-4 mr-2" />
                   Search
                 </Button>
+                {/* Dark Mode Toggle in Mobile Menu */}
+                <div className="flex items-center justify-between mt-4">
+                  <span className="text-sm font-medium">Theme</span>
+                  <ThemeToggle />
+                </div>
               </div>
             </nav>
           </div>
