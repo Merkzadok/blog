@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, Clock, Heart } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import type { Article } from "@/lib/types";
 import { formatDate, getReadingTime } from "@/lib/api";
 
@@ -37,23 +38,28 @@ export default function ArticleCarousel({ articles }: ArticleCarouselProps) {
     <div className="relative w-full h-96 rounded-lg overflow-hidden group">
       <div className="relative h-full">
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent z-10" />
-        <img
+        <Image
           src={
             currentArticle.cover_image ||
             currentArticle.social_image ||
             "/placeholder.svg?height=400&width=800&query=blog post cover" ||
+            "/placeholder.svg" ||
             "/placeholder.svg"
           }
           alt={currentArticle.title}
-          className="w-full h-full object-cover"
+          fill
+          className="object-cover"
+          priority
         />
         <div className="absolute inset-0 z-20 flex flex-col justify-end p-6 text-white">
           <div className="max-w-2xl">
             <div className="flex items-center gap-4 mb-3">
-              <img
+              <Image
                 src={currentArticle.user.profile_image_90 || "/placeholder.svg"}
                 alt={currentArticle.user.name}
-                className="w-8 h-8 rounded-full"
+                width={32}
+                height={32}
+                className="rounded-full"
               />
               <span className="text-sm font-medium">
                 {currentArticle.user.name}

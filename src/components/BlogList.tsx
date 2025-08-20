@@ -2,6 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Clock, Heart, MessageCircle } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import type { Article } from "@/lib/types";
 import { formatDate, getReadingTime } from "@/lib/api";
 
@@ -29,26 +30,30 @@ export default function BlogList({
                   <div className="flex flex-col lg:flex-row gap-6">
                     <div className="lg:w-1/3">
                       <div className="aspect-video relative overflow-hidden rounded-lg">
-                        <img
+                        <Image
                           src={
                             article.cover_image ||
                             article.social_image ||
                             "/placeholder.svg?height=200&width=300&query=blog post cover" ||
+                            "/placeholder.svg" ||
                             "/placeholder.svg"
                           }
                           alt={article.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                       </div>
                     </div>
                     <div className="lg:w-2/3 space-y-4">
                       <div className="flex items-center gap-3">
-                        <img
+                        <Image
                           src={
                             article.user.profile_image_90 || "/placeholder.svg"
                           }
                           alt={article.user.name}
-                          className="w-8 h-8 rounded-full"
+                          width={32}
+                          height={32}
+                          className="rounded-full"
                         />
                         <div className="flex items-center gap-2 text-sm text-muted-foreground">
                           <span className="font-medium">
@@ -68,15 +73,17 @@ export default function BlogList({
                       </p>
 
                       <div className="flex flex-wrap gap-2">
-                        {article.tag_list.slice(0, 3).map((tag) => (
-                          <Badge
-                            key={tag}
-                            variant="secondary"
-                            className="text-xs"
-                          >
-                            {tag}
-                          </Badge>
-                        ))}
+                        {article.tag_list &&
+                          Array.isArray(article.tag_list) &&
+                          article.tag_list.slice(0, 3).map((tag) => (
+                            <Badge
+                              key={tag}
+                              variant="secondary"
+                              className="text-xs"
+                            >
+                              {tag}
+                            </Badge>
+                          ))}
                       </div>
 
                       <div className="flex items-center gap-6 text-sm text-muted-foreground">

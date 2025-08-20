@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import type { Article } from "@/lib/types";
 import { formatDate, getReadingTime } from "@/lib/api";
 
@@ -64,7 +65,7 @@ export default function BlogDetailContent({ article }: BlogDetailContentProps) {
                   </Badge>
                 ))
               : typeof article.tag_list === "string"
-              ? article.tag_list.split(",").map((tag: string) => (
+              ? article.tag_list.split(",").map((tag) => (
                   <Badge key={tag.trim()} variant="secondary">
                     {tag.trim()}
                   </Badge>
@@ -83,10 +84,12 @@ export default function BlogDetailContent({ article }: BlogDetailContentProps) {
           {/* Author Info */}
           <div className="flex items-center justify-between flex-wrap gap-4">
             <div className="flex items-center gap-4">
-              <img
+              <Image
                 src={article.user.profile_image_90 || "/placeholder.svg"}
                 alt={article.user.name}
-                className="w-12 h-12 rounded-full"
+                width={48}
+                height={48}
+                className="rounded-full"
               />
               <div>
                 <h3 className="font-semibold text-foreground">
@@ -110,11 +113,12 @@ export default function BlogDetailContent({ article }: BlogDetailContentProps) {
 
         {/* Cover Image */}
         {article.cover_image && (
-          <div className="mb-8">
-            <img
+          <div className="mb-8 relative h-64 md:h-96">
+            <Image
               src={article.cover_image || "/placeholder.svg"}
               alt={article.title}
-              className="w-full h-64 md:h-96 object-cover rounded-lg"
+              fill
+              className="object-cover rounded-lg"
             />
           </div>
         )}
@@ -168,10 +172,12 @@ export default function BlogDetailContent({ article }: BlogDetailContentProps) {
         <Card>
           <CardContent className="p-6">
             <div className="flex items-start gap-4">
-              <img
+              <Image
                 src={article.user.profile_image_90 || "/placeholder.svg"}
                 alt={article.user.name}
-                className="w-16 h-16 rounded-full flex-shrink-0"
+                width={64}
+                height={64}
+                className="rounded-full flex-shrink-0"
               />
               <div className="flex-1">
                 <h3 className="text-xl font-semibold text-foreground mb-2">

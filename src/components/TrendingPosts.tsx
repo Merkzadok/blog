@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Clock, Heart } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import type { Article } from "@/lib/types";
 import { formatDate, getReadingTime } from "@/lib/api";
 
@@ -24,25 +25,29 @@ export default function TrendingPosts({ articles }: TrendingPostsProps) {
               <CardContent className="p-0">
                 <Link href={`/blog/${article.id}`}>
                   <div className="aspect-video relative overflow-hidden rounded-t-lg">
-                    <img
+                    <Image
                       src={
                         article.cover_image ||
                         article.social_image ||
                         "/placeholder.svg?height=200&width=300&query=blog post thumbnail" ||
+                        "/placeholder.svg" ||
                         "/placeholder.svg"
                       }
                       alt={article.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
                   <div className="p-4">
                     <div className="flex items-center gap-2 mb-2">
-                      <img
+                      <Image
                         src={
                           article.user.profile_image_90 || "/placeholder.svg"
                         }
                         alt={article.user.name}
-                        className="w-6 h-6 rounded-full"
+                        width={24}
+                        height={24}
+                        className="rounded-full"
                       />
                       <span className="text-sm text-muted-foreground">
                         {article.user.name}
