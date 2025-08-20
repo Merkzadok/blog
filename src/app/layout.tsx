@@ -15,7 +15,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ByteThoughts - A Modern Mini Blog",
+  title: "TechBlog - A Modern Mini Blog",
   description:
     "Discover the latest insights and stories from the developer community",
   generator: "v0.app",

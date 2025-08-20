@@ -23,7 +23,7 @@ export default function Header() {
               <BookOpen className="w-5 h-5 text-accent-foreground" />
             </div>
             <span className="text-xl font-bold text-foreground group-hover:text-accent transition-colors">
-              ByteThoughts
+              TechBlog
             </span>
           </Link>
 

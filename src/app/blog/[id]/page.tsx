@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: BlogDetailPageProps) {
   }
 
   return {
-    title: `${article.title} | ByteThoughts`,
+    title: `${article.title} | TechBlog`,
     description: article.description,
     openGraph: {
       title: article.title,
