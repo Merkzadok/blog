@@ -4,9 +4,9 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, Clock, Heart } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 import type { Article } from "@/lib/types";
 import { formatDate, getReadingTime } from "@/lib/api";
+import Image from "next/image";
 
 interface ArticleCarouselProps {
   articles: Article[];

@@ -1,9 +1,9 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Clock, Heart } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 import type { Article } from "@/lib/types";
 import { formatDate, getReadingTime } from "@/lib/api";
+import Image from "next/image";
 
 interface TrendingPostsProps {
   articles: Article[];
