@@ -18,7 +18,6 @@ export const metadata: Metadata = {
   title: "TechBlog - A Modern Mini Blog",
   description:
     "Discover the latest insights and stories from the developer community",
-  generator: "v0.app",
 };
 
 export default function RootLayout({
